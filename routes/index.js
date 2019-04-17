@@ -7,18 +7,18 @@ router.get('/', function(req, res, next) {
 });
 
 /*GET User page. */
-router.get('/user', (req, res, next) => {
-  res.render('user', {title: 'Quản lý người sử dụng'});
+router.get('/customer', (req, res, next) => {
+  res.render('customer', {title: 'Quản lý khách hàng'});
 });
 
 /*GET User-detail page. */
-router.get('/user_detail', (req, res, next) => {
-  res.render('user_detail', {title: 'Cập nhật thông tin'});
+router.get('/customer_detail', (req, res, next) => {
+  res.render('customer_detail', {title: 'Cập nhật thông tin'});
 });
 
 /*GET Product page. */
 router.get('/product', (req, res, next) => {
-  res.render('product', {title: 'Sản phẩm'});
+  res.render('product', {title: 'Quản lý sản phẩm'});
 });
 
 
