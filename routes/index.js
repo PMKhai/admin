@@ -21,5 +21,8 @@ router.get('/product', (req, res, next) => {
   res.render('product', {title: 'Quản lý sản phẩm'});
 });
 
-
+/*Get Order management page. */
+router.get('/order_management', (req, res, next) => {
+  res.render('order_management', {title: 'Quản lý đơn đặt hàng'});
+});
 module.exports = router;
