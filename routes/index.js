@@ -8,20 +8,11 @@ router.get('/', function (req, res, next) {
   });
 });
 
-/*GET User page. */
-
 
 /*GET User-detail page. */
 router.get('/customer_detail', (req, res, next) => {
   res.render('customer_detail', {
     title: 'Cập nhật thông tin'
-  });
-});
-
-/*GET Product page. */
-router.get('/product', (req, res, next) => {
-  res.render('product', {
-    title: 'Quản lý sản phẩm'
   });
 });
 
