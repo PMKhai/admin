@@ -3,3 +3,9 @@ exports.customers_list = (req, res, next) => {
         title: "Khách hàng"
     });
 }
+
+exports.customers_detail = (req, res, next) => {
+    res.render("customer_detail", {
+        title: "Chi Tiết"
+    });
+}
