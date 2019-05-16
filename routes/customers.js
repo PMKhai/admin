@@ -7,6 +7,6 @@ var customer_controller = require('../controllers/customerController');
 router.get('/', customer_controller.customers_list);
 
 /* Get customer detail*/
-router.get('/detail', customer_controller.customers_detail);
+router.get('/addingAndEditing', customer_controller.customers_detail);
 
 module.exports = router;
