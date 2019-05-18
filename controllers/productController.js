@@ -14,3 +14,8 @@ exports.product_detail = (req, res, next) => {
         title: "chi tiết sản phẩm"
     });
 }
+
+exports.product_adding = async (req, res, next) => {
+    await product.adding(req.body);
+    res.redirect('./');
+}

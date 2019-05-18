@@ -7,6 +7,9 @@ var product_controller = require('../controllers/productController');
 router.get('/', product_controller.product_list);
 
 /*Get product detail page*/
-router.get('/addingAndEditing', product_controller.product_detail);
+router.get('/add', product_controller.product_detail);
+
+/* Post adding product page*/
+router.post('/add', product_controller.product_adding);
 
 module.exports = router;

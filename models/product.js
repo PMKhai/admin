@@ -9,4 +9,9 @@ const list = async () => {
     return results;
 }
 
+const adding = async (product) => {
+    return dbs.production.collection('products').insertOne(product);
+}
+
 exports.list = list;
+exports.adding = adding;
