@@ -5,7 +5,7 @@ exports.category_list = (req, res, next) => {
 }
 
 exports.category_detail = (req, res, next) => {
-    res.render('category/addingAndEditing', {
+    res.render('category/detail', {
         title: "Chi Tiết loại sản phẩm"
     })
 }

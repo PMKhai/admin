@@ -5,7 +5,7 @@ exports.product_list = (req, res, next) => {
 }
 
 exports.product_detail = (req, res, next) => {
-    res.render("product/addingAndEditing", {
+    res.render("product/detail", {
         title: "chi tiết sản phẩm"
     });
 }

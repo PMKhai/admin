@@ -5,7 +5,7 @@ exports.customers_list = (req, res, next) => {
 }
 
 exports.customers_detail = (req, res, next) => {
-    res.render("customer/addingAndEditing", {
+    res.render("customer/detail", {
         title: "Chi Tiết"
     });
 }
