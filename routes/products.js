@@ -6,10 +6,16 @@ var product_controller = require('../controllers/productController');
 /*Get product page*/
 router.get('/', product_controller.product_list);
 
-/*Get product detail page*/
+/*Get adding product page*/
 router.get('/add', product_controller.product_detail);
 
 /* Post adding product page*/
 router.post('/add', product_controller.product_adding);
+
+/*Get editing product page*/
+router.get('/:id', product_controller.product_loading_detail);
+
+/*Post  editing product page*/
+router.post('/:id', product_controller.product_edit);
 
 module.exports = router;

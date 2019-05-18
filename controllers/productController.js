@@ -19,3 +19,16 @@ exports.product_adding = async (req, res, next) => {
     await product.adding(req.body);
     res.redirect('./');
 }
+
+exports.product_loading_detail = async (req, res, next) => {
+    const productDetail = await product.detail(req.params.id);
+    console.log(productDetail);
+    res.render('product/detail', {
+        productDetail
+    });
+}
+
+exports.product_edit = async (req, res, next) => {
+    await product.editing(req.params.id, req.body);
+    res.redirect('./');
+}
