@@ -46,28 +46,31 @@
               </tr>
             </thead>
             <tbody>
+              {{#each productList}}
               <tr>
                 <td>1</td>
                 <td>
-                  <b>Pesamakini Backend UI</b>
+                  <b>{{this.name}}</b>
                   <br />
-                  <small>Mã SP: 123456789132654</small>
+                  <small>Mã SP: {{this._id}}</small>
                 </td>
-                <td>pmk</td>
+                <td>{{this.distributor}}</td>
                 <td>
-                  Watch
-                </td>
-                <td>
-                  12
+                  {{this.brand}}
                 </td>
                 <td>
-                  1000000 VNĐ
+                  {{this.quantum}}
                 </td>
                 <td>
-                  <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Chỉnh sửa </a>
-                  <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
+                  {{this.price}} VNĐ
+                </td>
+                <td>
+                  <a href="/product/{{this._id}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Chỉnh sửa
+                  </a>
+                  <a href="/product/{{this._id}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
                 </td>
               </tr>
+              {{/each}}
             </tbody>
           </table>
           <!-- end project list -->

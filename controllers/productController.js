@@ -1,6 +1,11 @@
-exports.product_list = (req, res, next) => {
+const product = require('../models/product');
+
+exports.product_list = async (req, res, next) => {
+    const productList = await product.list();
+    console.log(productList);
     res.render("product/index", {
-        title: "Sản phẩm"
+        title: "Quản lý sản phẩm",
+        productList
     });
 }
 

@@ -13,8 +13,8 @@ function connect(uri) {
     }).then(client => client.db())
 }
 
-exports.initdb = async () => {
-    let database = connect(PROD_URI);
+exports.initdb = async function () {
+    let database = await connect(PROD_URI);
     dbs.production = database;
 }
 
