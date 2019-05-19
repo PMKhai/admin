@@ -1,4 +1,6 @@
 const product = require('../models/product');
+const category = require('../models/category');
+const distributor = require('../models/distributor');
 
 exports.product_list = async (req, res, next) => {
     const productList = await product.list();
@@ -15,13 +17,18 @@ exports.product_adding = async (req, res, next) => {
     await product.adding(req.body);
     res.redirect('./');
 }
-exports.product_detail = (req, res, next) => {
+exports.product_detail = async (req, res, next) => {
     const display = {
         btn: "Thêm"
     };
+    const categoryList = await category.list();
+    console.log(categoryList);
+    const distributorList = await distributor.list();
     res.render("product/detail", {
         title: "Thêm mới sản phẩm",
-        display
+        display,
+        categoryList,
+        distributorList
     });
 }
 exports.product_loading_detail = async (req, res, next) => {

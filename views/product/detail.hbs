@@ -29,7 +29,9 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select name="category" class="form-control col-md-7 col-xs-12" value="">
                                     <option selected hidden>Chọn loại sản phẩm...</option>
-                                    <option value="Ahuhu"></option>
+                                    {{#each categoryList}}
+                                    <option value="{{this.name}}">{{this.name}}</option>
+                                    {{/each}}
                                 </select>
                             </div>
                         </div>
@@ -41,7 +43,9 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select name="distributor" class="form-control col-md-7 col-xs-12" value="">
                                     <option selected hidden>Chọn nhà phân phối...</option>
-                                    <option value="Ahuhu"></option>
+                                    {{#each distributorList}}
+                                    <option value="{{this.name}}">{{this.name}}</option>
+                                    {{/each}}
                                 </select>
                             </div>
                         </div>
