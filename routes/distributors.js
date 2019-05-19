@@ -18,4 +18,7 @@ router.get('/:id', distributor_controller.distributor_loading_detail);
 /*Post  editing distributor page*/
 router.post('/:id', distributor_controller.distributor_edit);
 
+/*Post  deleting distributor page*/
+router.get('/delete/:id', distributor_controller.distributor_delete);
+
 module.exports = router;

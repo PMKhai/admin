@@ -40,3 +40,8 @@ exports.distributor_edit = async (req, res, next) => {
     await distributor.editing(req.params.id, req.body);
     res.redirect('./');
 }
+
+exports.distributor_delete = async (req, res, next) => {
+    await distributor.deleting(req.params.id);
+    res.redirect('/distributor');
+}
