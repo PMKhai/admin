@@ -1,0 +1,67 @@
+<div class="">
+  <div class="page-title">
+    <div class="title_left">
+      <h3>Nhà phân phối</h3>
+    </div>
+
+    <div class="title_right">
+      <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Nhà phân phối...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Tìm!</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a href="/distributor/add" class="btn btn-default btn-xs"><i class="fa fa-plus-square"></i>
+                Thêm</a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+
+          <!-- start project list -->
+          <table class="table table-striped projects">
+            <thead>
+              <tr>
+                <th style="width: 1%">STT</th>
+                <th style="width: 80%">Tên nhà phân phối</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each distributorList}}
+              <tr>
+                <td>1</td>
+                <td>
+                  <b>{{this.name}}</b>
+                  <br />
+                  <small>Mã SP: {{this._id}}</small>
+                </td>
+                <td>
+                  <a href="/distributor/{{this._id}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Chỉnh sửa
+                  </a>
+                  <a href="/distributor/{{this._id}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
+                </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+          <!-- end project list -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
