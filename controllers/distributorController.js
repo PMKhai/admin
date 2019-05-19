@@ -10,8 +10,12 @@ exports.distributor_list = async (req, res, next) => {
 }
 
 exports.distributor_detail = (req, res, next) => {
+    const display = {
+        btn: "Thêm"
+    };
     res.render('distributor/detail', {
-        title: "Chi tiết nhà phân phối"
+        title: "Chi tiết nhà phân phối",
+        display
     })
 }
 
@@ -21,10 +25,14 @@ exports.distributor_adding = async (req, res, next) => {
 }
 
 exports.distributor_loading_detail = async (req, res, next) => {
+    const display = {
+        btn: "Cập nhật"
+    };
     const distributorDetail = await distributor.detail(req.params.id);
     console.log(distributorDetail);
     res.render('distributor/detail', {
-        distributorDetail
+        distributorDetail,
+        display
     });
 }
 
