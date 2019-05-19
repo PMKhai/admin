@@ -7,6 +7,14 @@ var category_controller = require('../controllers/categoryController');
 router.get('/', category_controller.category_list);
 
 /*Get category detail.*/
-router.get('/addingAndEditing', category_controller.category_detail);
+router.get('/add', category_controller.category_detail);
+/* Post adding category page*/
+router.post('/add', category_controller.category_adding);
+
+/*Get editing category page*/
+router.get('/:id', category_controller.category_loading_detail);
+
+/*Post  editing category page*/
+router.post('/:id', category_controller.category_edit);
 
 module.exports = router;

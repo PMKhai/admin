@@ -9,21 +9,22 @@ exports.product_list = async (req, res, next) => {
     });
 }
 
-exports.product_detail = (req, res, next) => {
-    res.render("product/detail", {
-        title: "chi tiết sản phẩm"
-    });
-}
+
 
 exports.product_adding = async (req, res, next) => {
     await product.adding(req.body);
     res.redirect('./');
 }
-
+exports.product_detail = (req, res, next) => {
+    res.render("product/detail", {
+        title: "Thêm mới sản phẩm"
+    });
+}
 exports.product_loading_detail = async (req, res, next) => {
     const productDetail = await product.detail(req.params.id);
     console.log(productDetail);
     res.render('product/detail', {
+        title:"Chỉnh sửa sản phẩm",
         productDetail
     });
 }

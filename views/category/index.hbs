@@ -23,7 +23,7 @@
             <div class="x_panel">
                 <div class="x_title">
                     <ul class="nav navbar-right panel_toolbox">
-                        <li><a href="/category/addingAndEditing" class="btn btn-default btn-xs"><i
+                        <li><a href="/category/add" class="btn btn-default btn-xs"><i
                                     class="fa fa-plus-square"></i>
                                 Thêm</a>
                         </li>
@@ -44,19 +44,21 @@
                             </tr>
                         </thead>
                         <tbody>
+                                {{#each categoryList}}
                             <tr>
                                 <td>1</td>
                                 <td>
-                                    <b>Pesamakini Backend UI</b>
+                                    <b>{{this.name}}</b>
                                     |
-                                    <small>Mã LSP: 123456789132654</small>
+                                    <small>Mã LSP: {{this._id}}</small>
                                 </td>
                                 <td>
-                                    <a href="/category/addingAndEditing" class="btn btn-info btn-xs"><i
+                                    <a href="/category/{{this._id}}" class="btn btn-info btn-xs"><i
                                             class="fa fa-pencil"></i> Chỉnh sửa </a>
                                     <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
                                 </td>
                             </tr>
+                                {{/each}}
                         </tbody>
                     </table>
                     <!-- end project list -->
