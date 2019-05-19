@@ -10,8 +10,9 @@ exports.category_list = async (req, res, next) => {
 }
 
 exports.category_detail = (req, res, next) => {
+    const add = "Thêm mới";
     res.render('category/detail', {
-        title: "Chi Tiết loại sản phẩm"
+        title: "Thêm mới loại sản phẩm",add
     });
 }
 exports.category_adding = async (req, res, next) => {
@@ -19,11 +20,12 @@ exports.category_adding = async (req, res, next) => {
     res.redirect('./');
 }
 exports.category_loading_detail = async (req, res, next) => {
+    const add = "Cập nhật";
     const categoryDetail = await category.detail(req.params.id);
     console.log(categoryDetail);
     res.render('category/detail', {
         title:"Chỉnh sửa loại sản phẩm",
-        categoryDetail
+        categoryDetail,add
     });
 }
 
