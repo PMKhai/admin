@@ -31,8 +31,13 @@ const editing = async (id, category) => {
         upsert: true
     })
 }
-
+const deleting = async (id) => {
+    return await dbs.production.collection('categories').deleteOne({
+        _id: ObjectId(id)
+    });
+}
 exports.list = list;
 exports.adding = adding;
 exports.detail = detail;
 exports.editing = editing;
+exports.deleting = deleting ;

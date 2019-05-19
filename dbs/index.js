@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
-
+const mongo = require('mongodb')
 // connection string
 const PROD_URI = "mongodb+srv://khaipham:123456789a@cluster0-lwsla.mongodb.net/LTW-data?retryWrites=true";
 

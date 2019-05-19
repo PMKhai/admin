@@ -16,5 +16,6 @@ router.get('/:id', category_controller.category_loading_detail);
 
 /*Post  editing category page*/
 router.post('/:id', category_controller.category_edit);
-
+/*Post  deleting category page*/
+router.get('/delete/:id', category_controller.category_delete);
 module.exports = router;

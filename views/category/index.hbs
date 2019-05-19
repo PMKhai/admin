@@ -1,7 +1,7 @@
 <div class="">
     <div class="page-title">
         <div class="title_left">
-            <h3>Đơn đặt hàng</h3>
+            <h3>Loại hàng</h3>
         </div>
 
         <div class="title_right">
@@ -55,7 +55,7 @@
                                 <td>
                                     <a href="/category/{{this._id}}" class="btn btn-info btn-xs"><i
                                             class="fa fa-pencil"></i> Chỉnh sửa </a>
-                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
+                                    <a href="/category/delete/{{this._id}}" onclick="return confirm('Bạn có thật sự muốn xóa không ?');" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
                                 </td>
                             </tr>
                                 {{/each}}

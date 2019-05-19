@@ -31,3 +31,7 @@ exports.category_edit = async (req, res, next) => {
     await category.editing(req.params.id, req.body);
     res.redirect('./');
 }
+exports.category_delete = async (req, res, next) => {
+    await category.deleting(req.params.id);
+    res.redirect('/category');
+}
