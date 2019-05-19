@@ -18,4 +18,7 @@ router.get('/:id', product_controller.product_loading_detail);
 /*Post  editing product page*/
 router.post('/:id', product_controller.product_edit);
 
+/*Post  deleting category page*/
+router.get('/delete/:id', product_controller.product_delete);
+
 module.exports = router;

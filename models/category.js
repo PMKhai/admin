@@ -40,4 +40,4 @@ exports.list = list;
 exports.adding = adding;
 exports.detail = detail;
 exports.editing = editing;
-exports.deleting = deleting ;
+exports.deleting = deleting;
