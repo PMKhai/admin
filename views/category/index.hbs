@@ -7,7 +7,7 @@
         <div class="title_right">
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Khách hàng...">
+                    <input type="text" class="form-control" placeholder="Loại sản phẩm...">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button">Tìm!</button>
                     </span>
@@ -23,8 +23,7 @@
             <div class="x_panel">
                 <div class="x_title">
                     <ul class="nav navbar-right panel_toolbox">
-                        <li><a href="/category/add" class="btn btn-default btn-xs"><i
-                                    class="fa fa-plus-square"></i>
+                        <li><a href="/category/add" class="btn btn-default btn-xs"><i class="fa fa-plus-square"></i>
                                 Thêm</a>
                         </li>
                     </ul>
@@ -44,7 +43,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                                {{#each categoryList}}
+                            {{#each categoryList}}
                             <tr>
                                 <td>1</td>
                                 <td>
@@ -55,10 +54,12 @@
                                 <td>
                                     <a href="/category/{{this._id}}" class="btn btn-info btn-xs"><i
                                             class="fa fa-pencil"></i> Chỉnh sửa </a>
-                                    <a href="/category/delete/{{this._id}}" onclick="return confirm('Bạn có thật sự muốn xóa không ?');" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
+                                    <a href="/category/delete/{{this._id}}"
+                                        onclick="return confirm('Bạn có thật sự muốn xóa không ?');"
+                                        class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
                                 </td>
                             </tr>
-                                {{/each}}
+                            {{/each}}
                         </tbody>
                     </table>
                     <!-- end project list -->
