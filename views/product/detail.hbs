@@ -30,7 +30,7 @@
                                 <select name="category" class="form-control col-md-7 col-xs-12" value="">
                                     <option selected hidden>Chọn loại sản phẩm...</option>
                                     {{#each categoryList}}
-                                    <option value="{{this.name}}">{{this.name}}</option>
+                                    <option value="{{this.name}}" {{this.selected}}>{{this.name}}</option>
                                     {{/each}}
                                 </select>
                             </div>
@@ -42,9 +42,9 @@
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select name="distributor" class="form-control col-md-7 col-xs-12" value="">
-                                    <option selected hidden>Chọn nhà phân phối...</option>
+                                    <option selected hidden disabled>Chọn nhà phân phối...</option>
                                     {{#each distributorList}}
-                                    <option value="{{this.name}}">{{this.name}}</option>
+                                    <option value="{{this.name}}" {{this.selected}}>{{this.name}}</option>
                                     {{/each}}
                                 </select>
                             </div>
