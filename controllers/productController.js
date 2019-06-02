@@ -63,6 +63,7 @@ exports.product_loading_detail = async (req, res, next) => {
 }
 
 exports.product_edit = async (req, res, next) => {
+    //console.log(req.file.path);
     await product.editing(req.params.id, req.body);
     res.redirect('./');
 }
