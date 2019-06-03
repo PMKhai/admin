@@ -1,6 +1,11 @@
-exports.admin_list = (req, res, next) => {
+const admin = require('../models/admin');
+
+exports.admin_list = async (req, res, next) => {
+    const adminList = await admin.list();
+    console.log(adminList);
     res.render('admin/index', {
-        title: "Quản trị viên"
+        title: "Quản trị viên",
+        adminList
     })
 }
 

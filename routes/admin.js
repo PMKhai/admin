@@ -7,6 +7,6 @@ const adminController = require('../controllers/adminController');
 router.get('/', adminController.admin_list);
 
 /*Get admin detail page. */
-router.get('/detail', adminController.admin_detail);
+router.get('/add', adminController.admin_detail);
 
 module.exports = router;

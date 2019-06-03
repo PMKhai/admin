@@ -16,4 +16,26 @@ const register = async (username, email, password) => {
     })
 }
 
+const get = async (email) => {
+    return await dbs.production.collection(ADMIN).findOne({
+        email
+    });
+}
+
+const verify = async (email, password) => {
+    const admin = await get(email);
+    if (!admin)
+        return undefined;
+    console.log(admin.password);
+    return await bcrypt.compare(password, admin.password);
+}
+
+const list = async () => {
+    const results = await dbs.production.collection(ADMIN).find({}).toArray();
+    return results;
+}
+
 exports.register = register;
+exports.get = get;
+exports.verify = verify;
+exports.list = list;

@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
+const passport = require('passport');
+const localStrategy = require('passport-local').Strategy;
 
 var indexRouter = require('./routes/index');
 var customersRouter = require('./routes/customers');
@@ -13,6 +16,40 @@ var distributorRouter = require('./routes/distributors');
 var brandRouter = require('./routes/brands');
 var authenRouter = require('./routes/authen');
 var adminRouter = require('./routes/admin');
+
+const Admin = require('./models/admin');
+
+passport.use(new localStrategy({
+    usernameField: 'email'
+  },
+  async (username, password, done) => {
+    try {
+      const admin = await Admin.get(username);
+      if (!admin)
+        return done(null, false, {
+          message: 'Incorrect username or password.'
+        });
+      const isVerify = await Admin.verify(username, password);
+      if (!isVerify)
+        return done(null, false, {
+          message: 'Incorrect username or password.'
+        });
+      return done(null, admin);
+    } catch (ex) {
+      return done(ex);
+    }
+  }
+))
+
+passport.serializeUser((admin, done) => {
+  done(null, admin.email);
+});
+
+passport.deserializeUser(async (email, done) => {
+  const admin = await Admin.get(email);
+  done(undefined, admin);
+});
+
 
 var app = express();
 
@@ -27,6 +64,11 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: "secret"
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/customer', customersRouter);
@@ -37,6 +79,7 @@ app.use('/distributor', distributorRouter);
 app.use('/brand', brandRouter);
 app.use('/authen', authenRouter);
 app.use('/admin', adminRouter);
+
 
 
 // catch 404 and forward to error handler

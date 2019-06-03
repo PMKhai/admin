@@ -8,7 +8,11 @@ exports.authen_login = (req, res, next) => {
 }
 
 exports.registerPost = async (req, res, next) => {
-    console.log(req.body);
     await admin.register(req.body.username, req.body.email, req.body.password);
+    res.redirect('/authen');
+}
+
+exports.logout = (req, res, next) => {
+    req.logout();
     res.redirect('/authen');
 }
