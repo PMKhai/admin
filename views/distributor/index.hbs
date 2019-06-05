@@ -52,8 +52,9 @@
                 <td>
                   <a href="/distributor/{{this._id}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Chỉnh sửa
                   </a>
-                  <a href="/distributor/delete/{{this._id}}" onclick="return confirm('Bạn có thật sự muốn xóa không ?');"
-                    class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
+                  <a href="/distributor/delete/{{this._id}}"
+                    onclick="return confirm('Bạn có thật sự muốn xóa không ?');" class="btn btn-danger btn-xs"><i
+                      class="fa fa-trash-o"></i> Xóa </a>
                 </td>
               </tr>
               {{/each}}
@@ -66,3 +67,9 @@
     </div>
   </div>
 </div>
+{{#extend "namesFirst"}}
+{{admin.username}}
+{{/extend}}
+{{#extend "namesSecond"}}
+{{admin.username}}
+{{/extend}}
