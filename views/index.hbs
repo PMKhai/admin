@@ -209,9 +209,6 @@
       </div>
     </div>
   </div>
-  {{#extend "namesFirst"}}
-  {{admin.username}}
-  {{/extend}}
-  {{#extend "namesSecond"}}
-  {{admin.username}}
-  {{/extend}}
+  {{#extend "namesFirst"}}{{admin.username}}{{/extend}}
+  {{#extend "namesSecond"}}{{admin.username}}{{/extend}}
+  {{#extend "idAccount"}}{{admin._id}}{{/extend}}

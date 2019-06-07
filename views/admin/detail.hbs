@@ -10,15 +10,15 @@
             <div class="x_panel">
                 <div class="x_content">
 
-                    <form class="form-horizontal form-label-left" novalidate>
+                    <form class="form-horizontal form-label-left" method="POST" novalidate>
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Họ & tên <span
                                     class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
-                                    data-validate-words="1" name="name" placeholder="both name(s) e.g Jon Doe"
-                                    required="required" type="text" value="{{adminDetail.username}}">
+                                    data-validate-words="1" name="name" placeholder="" required="required" type="text"
+                                    value="{{adminDetail.username}}">
                             </div>
                         </div>
                         <div class="item form-group">
@@ -30,20 +30,44 @@
                                     class="form-control col-md-7 col-xs-12" value="{{adminDetail.email}}">
                             </div>
                         </div>
+                        {{#if isMe}}
                         <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address">Mật khẩu<span
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Mật khẩu hiện
+                                tại<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="password" id="password" name="password" placeholder=""
+                                    class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        {{/if}}
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="newPassword">Mật khẩu mới<span
                                     class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="password" id="password" name="password" required="required"
-                                    placeholder="www.website.com" class="form-control col-md-7 col-xs-12">
+                                <input type="password" id="newPassword" name="newPassword" placeholder=""
+                                    class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="repassword">Nhập lại mật
+                                khẩu<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="password" id="repassword" name="repassword" placeholder=""
+                                    class="form-control col-md-7 col-xs-12">
+                            </div>
+                            <i class="col-md-3 col-sm-3 col-xs-12" id="error-message">
+                            </i>
+                        </div>
+
 
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
-                                <button type="submit" class="btn btn-primary">Hủy bỏ</button>
+                                <a href="/" class="btn btn-primary">Hủy bỏ</a>
                                 <button id="send" type="submit" class="btn btn-success">Cập nhật</button>
                             </div>
                         </div>
@@ -58,4 +82,15 @@
 {{/extend}}
 {{#extend "namesSecond"}}
 {{admin.username}}
+{{/extend}}
+{{#extend "idAccount"}}{{admin._id}}{{/extend}}
+{{#extend "scripts"}}
+<script>
+    $('#repassword').focusout(function () {
+        if ($('#newPassword').val() != $('#repassword').val())
+            $('#error-message').html('Xác nhận mật khẩu mới không khớp');
+        else
+            $('#error-message').html('');
+    });
+</script>
 {{/extend}}

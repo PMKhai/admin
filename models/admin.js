@@ -16,14 +16,20 @@ const register = async (username, email, password) => {
     })
 }
 
-const get = async (email) => {
+const getByEmail = async (email) => {
     return await dbs.production.collection(ADMIN).findOne({
         email
     });
 }
 
+const getByID = async (id) => {
+    return await dbs.production.collection(ADMIN).findOne({
+        _id: ObjectID(id)
+    });
+}
+
 const verify = async (email, password) => {
-    const admin = await get(email);
+    const admin = await getByEmail(email);
     if (!admin)
         return undefined;
     console.log(admin.password);
@@ -35,7 +41,34 @@ const list = async () => {
     return results;
 }
 
+const updated = async (admin) => {
+    if (admin.newPassword == '') {
+
+        return await dbs.production.collection(ADMIN).updateOne({
+            email: admin.email
+        }, {
+            $set: {
+                username: admin.username
+            }
+        })
+    } else {
+        const hash = await bcrypt.hash(admin.newPassword, SALT_ROUNDS);
+
+        return await dbs.production.collection(ADMIN).updateOne({
+            email: admin.email
+        }, {
+            $set: {
+                username: admin.username,
+                password: hash
+            }
+        })
+    }
+}
+
+
 exports.register = register;
-exports.get = get;
+exports.getByEmail = getByEmail;
+exports.getByID = getByID;
 exports.verify = verify;
 exports.list = list;
+exports.updated = updated;

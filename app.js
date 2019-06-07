@@ -25,7 +25,7 @@ passport.use(new localStrategy({
   },
   async (username, password, done) => {
     try {
-      const admin = await Admin.get(username);
+      const admin = await Admin.getByEmail(username);
       if (!admin)
         return done(null, false, {
           message: 'Incorrect username or password.'
@@ -47,7 +47,7 @@ passport.serializeUser((admin, done) => {
 });
 
 passport.deserializeUser(async (email, done) => {
-  const admin = await Admin.get(email);
+  const admin = await Admin.getByEmail(email);
   done(undefined, admin);
 });
 

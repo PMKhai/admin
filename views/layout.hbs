@@ -29,6 +29,8 @@
   <!--style - pmk-->
   <link href="/css/style_pmk.css" rel="stylesheet">
   <link rel="shortcut icon" href="https://murmuring-beach-70127.herokuapp.com/images/icons/favicon.png">
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
 </head>
 
 <body class="nav-md">
@@ -117,7 +119,7 @@
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
-                  <li><a href="javascript:;"> Hồ sơ</a></li>
+                  <li><a href="/admin/setting/id={{block "idAccount"}}"> Hồ sơ</a></li>
                   <li><a href="/authen/logout"><i class="fa fa-sign-out pull-right"></i> Đăng xuất</a></li>
                 </ul>
               </li>
@@ -256,6 +258,7 @@
   <script src="/vendors/pdfmake/build/vfs_fonts.js"></script>
   <!-- Custom Theme Scripts -->
   <script src="/build/js/custom.min.js"></script>
+  {{{block "scripts"}}}
 </body>
 
 </html>

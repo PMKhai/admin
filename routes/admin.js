@@ -9,4 +9,9 @@ router.get('/', adminController.admin_list);
 /*Get admin detail page. */
 router.get('/add', adminController.admin_detail);
 
+router.get('/setting/id=:id', adminController.changeInfo);
+
+router.post('/setting/id=:id', adminController.updateInfo);
+
+
 module.exports = router;
