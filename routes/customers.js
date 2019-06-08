@@ -9,4 +9,6 @@ router.get('/page=:pageNumber', customer_controller.customers_list);
 /* Get customer detail*/
 router.get('/id=:id', customer_controller.customers_detail);
 
+router.post('/id=:id', customer_controller.customer_edit);
+
 module.exports = router;

@@ -20,3 +20,17 @@ const findOne = async (id) => {
     });
 }
 exports.findOne = findOne;
+
+const updateOne = async (id, customer) => {
+    return await dbs.production.collection(CUSTOMER).updateOne({
+        _id: ObjectId(id)
+    }, {
+        $set: {
+            username: customer.username,
+            email: customer.email,
+            address: customer.address,
+
+        }
+    })
+}
+exports.updateOne = updateOne;

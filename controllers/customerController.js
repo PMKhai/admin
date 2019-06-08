@@ -28,7 +28,6 @@ exports.customers_list = async (req, res, next) => {
         admin: req.user,
         customerList,
         paging
-
     });
 }
 
@@ -43,4 +42,12 @@ exports.customers_detail = async (req, res, next) => {
         admin: req.user,
         customerDetail
     });
+}
+
+exports.customer_edit = async (req, res, next) => {
+    if (!req.user)
+        res.redirect('/authen');
+    await customer.updateOne(req.params.id, req.body);
+    res.redirect('/customer/page=1');
+
 }
