@@ -6,8 +6,7 @@ const {
 const PRODUCT = 'products';
 
 const list = async (page) => {
-    const results = await dbs.production.collection(PRODUCT).find({}).skip((page - 1) * 6).limit(6).toArray();
-    return results;
+    return results = await dbs.production.collection(PRODUCT).find({}).skip((page - 1) * 6).limit(6).toArray();
 }
 
 const adding = async (product) => {

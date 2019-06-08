@@ -44,74 +44,38 @@
               </tr>
             </thead>
             <tbody>
+              {{#each customerList}}
               <tr>
                 <td>1</td>
                 <td>
-                  <a>Phạm Minh Khải</a>
-                  <br />
-                  <small>Ngày tạo: 01.01.2015</small>
+                  <a>{{this.username}}</a>
                 </td>
                 <td>
-                  <p>Minhkhaixxx@gmail.com</p>
+                  <p>{{this.email}}</p>
                 </td>
                 <td>
-                  <p>Gầm cầu Nguyễn Văn Cừ.</p>
+                  <p>{{this.address}}</p>
                 </td>
                 <td>
                   <button type="button" class="btn btn-success btn-xs">Đang hoạt động</button>
                 </td>
                 <td>
-                  <a href="/customer/addingAndEditing" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Chỉnh
+                  <a href="/customer/id={{this._id}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Chỉnh
                     sửa </a>
                   <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
                 </td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td>
-                  <a>Nguyễn Thị Bé Hai</a>
-                  <br />
-                  <small>Ngày tạo: 01.01.2015</small>
-                </td>
-                <td>
-                  <p>BeHaixxx@gmail.com</p>
-                </td>
-                <td>
-                  <p>Gầm cầu Nguyễn Văn Cừ, Quận 5.</p>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-success btn-xs">Đang hoạt động</button>
-                </td>
-                <td>
-                  <a href="/customer/detail" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Chỉnh sửa </a>
-                  <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>
-                  <a>Nguyễn Thị Bé Ba</a>
-                  <br />
-                  <small>Ngày tạo: 01.01.2015</small>
-                </td>
-                <td>
-                  <p>BeBaxxx@gmail.com</p>
-                </td>
-                <td>
-                  <p>Chân hầm Thủ Thiêm, Quận 1.</p>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-success btn-xs">Đang hoạt động</button>
-                </td>
-                <td>
-                  <a href="/customer/detail" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Chỉnh sửa </a>
-                  <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
-                </td>
-              </tr>
+              {{/each}}
             </tbody>
           </table>
           <!-- end project list -->
-
+          <div class="paginator">
+            <ul class="pagination pagination-lg">
+              {{#each paging}}
+              <li class="{{this.curentPage}}"><a href="/customer/page={{this.pnb}}">{{this.pnb}}</a></li>
+              {{/each}}
+            </ul>
+          </div>
         </div>
       </div>
     </div>

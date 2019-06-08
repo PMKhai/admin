@@ -17,8 +17,8 @@
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
-                  data-validate-words="2" name="name" placeholder="both name(s) e.g Jon Doe" required="required"
-                  type="text" value="Nguyễn Thị Bé Hai">
+                  data-validate-words="1" name="username" placeholder="" required="required" type="text"
+                  value="{{customerDetail.username}}">
               </div>
             </div>
             <div class="item form-group">
@@ -26,7 +26,7 @@
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12"
-                  value="BeHaixxx@gmail.com">
+                  value="{{customerDetail.email}}">
               </div>
             </div>
             <div class="item form-group">
@@ -34,8 +34,21 @@
                   class="required">*</span>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input id="address" name="website" required="required" placeholder="www.website.com"
-                  class="form-control col-md-7 col-xs-12" value="Gầm cầu Nguyễn Văn Cừ, Quận 5.">
+                <input id="address" name="address" required="required" placeholder=""
+                  class="form-control col-md-7 col-xs-12" value="{{customerDetail.address}}">
+              </div>
+            </div>
+
+            <div class="item form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Tình trạng <span
+                  class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <select name="active" class="form-control col-md-7 col-xs-12" value="">
+                  <option selected hidden>Chọn tình trạng...</option>
+                  <option value="active" {{this.selected}}>Đã kích hoạt</option>
+                  <option value="unactive" {{this.selected}}>chờ kích hoạt</option>
+                </select>
               </div>
             </div>
 

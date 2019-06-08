@@ -9,6 +9,7 @@ exports.product_list = async (req, res, next) => {
     const sizeOfProduct = await product.count();
     const numberOfPge = Math.ceil(sizeOfProduct / 6);
     const paging = []
+
     for (let i = 1; i <= numberOfPge; i++) {
         if (i == req.params.pageNumber)
             paging.push({
@@ -19,10 +20,10 @@ exports.product_list = async (req, res, next) => {
             paging.push({
                 pnb: i
             })
-
     }
 
     const productList = await product.list(req.params.pageNumber);
+
     console.log(productList);
     res.render("product/index", {
         title: "Quản lý sản phẩm",
@@ -38,7 +39,7 @@ exports.product_adding = async (req, res, next) => {
     if (!req.user)
         res.redirect('/authen');
     await product.adding(req.body);
-    res.redirect('./');
+    res.redirect('/product/page=1');
 }
 exports.product_detail = async (req, res, next) => {
     if (!req.user)
@@ -96,7 +97,7 @@ exports.product_edit = async (req, res, next) => {
         res.redirect('/authen');
     //console.log(req.file.path);
     await product.editing(req.params.id, req.body);
-    res.redirect('./');
+    res.redirect('/product/page=1');
 }
 
 exports.product_delete = async (req, res, next) => {
