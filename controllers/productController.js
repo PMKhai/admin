@@ -5,12 +5,30 @@ const distributor = require('../models/distributor');
 exports.product_list = async (req, res, next) => {
     if (!req.user)
         res.redirect('/authen');
-    const productList = await product.list();
+
+    const sizeOfProduct = await product.count();
+    const numberOfPge = Math.ceil(sizeOfProduct / 6);
+    const paging = []
+    for (let i = 1; i <= numberOfPge; i++) {
+        if (i == req.params.pageNumber)
+            paging.push({
+                pnb: i,
+                curentPage: 'disabled'
+            })
+        else
+            paging.push({
+                pnb: i
+            })
+
+    }
+
+    const productList = await product.list(req.params.pageNumber);
     console.log(productList);
     res.render("product/index", {
         title: "Quản lý sản phẩm",
         productList,
-        admin: req.user
+        admin: req.user,
+        paging
     });
 }
 
