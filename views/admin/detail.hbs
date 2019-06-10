@@ -29,7 +29,24 @@
                                 <input type="email" id="email" name="email" required="required"
                                     class="form-control col-md-7 col-xs-12" value="{{adminDetail.email}}">
                             </div>
+                            <i class="col-md-3 col-sm-3 col-xs-12" id="error-message-email">
+                            </i>
                         </div>
+                        {{#if edit}}
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="role">Phần quyền <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <select name="role" class="form-control col-md-7 col-xs-12" value="">
+                                    <option selected hidden disabled>Phân quyền...</option>
+                                    {{#each roleOption}}
+                                    <option value="{{this.option}}" {{this.selected}}>{{this.option}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        {{/if}}
                         {{#if isMe}}
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Mật khẩu hiện
@@ -68,7 +85,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
                                 <a href="/" class="btn btn-primary">Hủy bỏ</a>
-                                <button id="send" type="submit" class="btn btn-success">Cập nhật</button>
+                                <button id="send" type="submit" class="btn btn-success">{{display.btn}}</button>
                             </div>
                         </div>
                     </form>
@@ -88,9 +105,24 @@
 <script>
     $('#repassword').focusout(function () {
         if ($('#newPassword').val() != $('#repassword').val())
-            $('#error-message').html('Xác nhận mật khẩu mới không khớp');
+            $('#error-message').html('Mật khẩu mới không khớp');
         else
             $('#error-message').html('');
+    });
+</script>
+{{/extend}}
+
+{{#extend "ajax"}}
+<script>
+    $('#email').focusout(function () {
+        $.getJSON('/api/admin/check?email=' + $('#email').val(), function (data) {
+            if (data) {
+                $('#error-message-email').html('Email đã tồn tại. Vui lòng chọn email khác.');
+            }
+            else {
+                $('#error-message-email').html('');
+            }
+        })
     });
 </script>
 {{/extend}}

@@ -23,12 +23,12 @@
                         </div>
 
                         <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Loại sản phẩm <span
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category">Loại sản phẩm <span
                                     class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select name="category" class="form-control col-md-7 col-xs-12" value="">
-                                    <option selected hidden>Chọn loại sản phẩm...</option>
+                                    <option selected hidden disabled>Chọn loại sản phẩm...</option>
                                     {{#each categoryList}}
                                     <option value="{{this.name}}" {{this.selected}}>{{this.name}}</option>
                                     {{/each}}
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Số lượng: <span
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Số lượng <span
                                     class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -61,7 +61,16 @@
                         </div>
 
                         <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Gián bán: <span
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Mô tả <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <textarea name="description" id="description" class="form-control col-md-7 col-xs-12"
+                                    cols="5" rows="5"> {{productDetail.description}}</textarea>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Gián bán <span
                                     class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -73,9 +82,12 @@
 
                             <div class="item form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
-                                    <input type="file" name="file" class="file autocomplete-suggestion top_nav"
-                                        value="Chọn ảnh">
+                                    Ảnh sản phẩm
                                 </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="file" name="file" id="file"
+                                        class="file autocomplete-suggestion top_nav" value="Chọn ảnh">
+                                </div>
 
                             </div>
 

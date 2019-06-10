@@ -50,35 +50,10 @@
         </div>
         <div class="x_content">
           <div class="col-md-9 col-sm-12 col-xs-12">
-            <div class="demo-container" style="height:280px">
-              <div id="chart_plot_02" class="demo-placeholder"></div>
+            <div class="demo-container" style="height:40R0px">
+              <div id="my-chart"></div>
             </div>
-            <div class="tiles">
-              <div class="col-md-4 tile">
-                <span>Tổng khách hàng</span>
-                <h2>231,809</h2>
-                <span class="sparkline11 graph" style="height: 160px;">
-                  <canvas width="200" height="60"
-                    style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                </span>
-              </div>
-              <div class="col-md-4 tile">
-                <span>Doanh thu</span>
-                <h2>$231,809</h2>
-                <span class="sparkline22 graph" style="height: 160px;">
-                  <canvas width="200" height="60"
-                    style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                </span>
-              </div>
-              <div class="col-md-4 tile">
-                <span>Tổng khách hàng</span>
-                <h2>231,809</h2>
-                <span class="sparkline11 graph" style="height: 160px;">
-                  <canvas width="200" height="60"
-                    style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                </span>
-              </div>
-            </div>
+
 
           </div>
 
@@ -212,3 +187,38 @@
   {{#extend "namesFirst"}}{{admin.username}}{{/extend}}
   {{#extend "namesSecond"}}{{admin.username}}{{/extend}}
   {{#extend "idAccount"}}{{admin._id}}{{/extend}}
+  {{#extend "charts"}}
+  <script type="text/javascript">
+
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', { 'packages': ['corechart'] });
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+
+    function drawChart() {
+
+      const a = [["Element", "số lượng", {
+        role: "style"
+      }], ["Copper", 3, "#76a7fa"],
+      ["Silver", 10.49, "silver"],
+      ["Gold", 19.30, "gold"],
+      ["Platinum", 21.45, "color: #e5e4e2"]];
+
+      var data = google.visualization.arrayToDataTable(a);
+
+      var options = {
+        width: 700,
+        height: 400,
+        bar: { groupWidth: "50%" },
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("my-chart"));
+      chart.draw(data, options);
+    }
+  </script>
+  {{/extend}}

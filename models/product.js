@@ -29,7 +29,8 @@ const editing = async (id, product) => {
             category: product.category,
             distributor: product.distributor,
             quantum: product.quantum,
-            price: product.price
+            price: product.price,
+            description: product.description
         }
     }, {
         upsert: true

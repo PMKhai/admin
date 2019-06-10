@@ -7,12 +7,13 @@ const {
 const ADMIN = "admins";
 const SALT_ROUNDS = 10;
 
-const register = async (username, email, password) => {
+const register = async (username, email, password, role) => {
     const hash = await bcrypt.hash(password, SALT_ROUNDS);
     return await dbs.production.collection(ADMIN).insert({
         username,
         email,
-        password: hash
+        password: hash,
+        role
     })
 }
 
@@ -65,6 +66,13 @@ const updated = async (admin) => {
     }
 }
 
+const check = async (email) => {
+    const admin = await dbs.production.collection(ADMIN).findOne({
+        email
+    });
+    if (admin) return true;
+    return false
+}
 
 exports.register = register;
 exports.getByEmail = getByEmail;
@@ -72,3 +80,4 @@ exports.getByID = getByID;
 exports.verify = verify;
 exports.list = list;
 exports.updated = updated;
+exports.check = check;

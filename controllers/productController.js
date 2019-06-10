@@ -74,7 +74,7 @@ exports.product_loading_detail = async (req, res, next) => {
     console.log(distributorList);
 
     categoryList.forEach(element => {
-        if (element.name == productDetail.distributor)
+        if (element.name == productDetail.category)
             element.selected = 'selected';
     });
     console.log(categoryList);

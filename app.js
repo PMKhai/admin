@@ -17,6 +17,7 @@ var distributorRouter = require('./routes/distributors');
 var brandRouter = require('./routes/brands');
 var authenRouter = require('./routes/authen');
 var adminRouter = require('./routes/admin');
+var apiAdminRouter = require('./routes/api/admin')
 
 const Admin = require('./models/admin');
 
@@ -100,6 +101,7 @@ app.use('/distributor', distributorRouter);
 app.use('/brand', brandRouter);
 app.use('/authen', authenRouter);
 app.use('/admin', adminRouter);
+app.use('/api/admin', apiAdminRouter);
 
 
 
