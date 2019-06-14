@@ -74,6 +74,32 @@ const check = async (email) => {
     return false
 }
 
+const edit = async (id, admin) => {
+    if (admin.newPassword == "") {
+        return await dbs.production.collection(ADMIN).updateOne({
+            _id: ObjectID(id)
+        }, {
+            $set: {
+                username: admin.name,
+                email: admin.email,
+                role: admin.role
+            }
+        })
+    } else {
+        const hash = await bcrypt.hash(admin.newPassword, SALT_ROUNDS);
+        return await dbs.production.collection(ADMIN).updateOne({
+            _id: ObjectID(id)
+        }, {
+            $set: {
+                username: admin.name,
+                email: admin.email,
+                role: admin.role,
+                password: hash
+            }
+        })
+    }
+}
+
 exports.register = register;
 exports.getByEmail = getByEmail;
 exports.getByID = getByID;
@@ -81,3 +107,4 @@ exports.verify = verify;
 exports.list = list;
 exports.updated = updated;
 exports.check = check;
+exports.edit = edit;

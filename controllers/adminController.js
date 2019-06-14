@@ -14,6 +14,8 @@ const findElementInArrayByEmail = (list, email) => {
 exports.admin_list = async (req, res, next) => {
     if (!req.user)
         res.redirect('/authen');
+    if (req.user.role === "normal")
+        res.send('Bạn không có quyền truy cập chứ năng này.');
 
     const adminList = await admin.list();
 
@@ -49,6 +51,7 @@ exports.changeInfo = async (req, res, next) => {
 exports.admin_detail = (req, res, next) => {
     if (!req.user)
         res.redirect('/authen');
+
     console.log(req.params.id);
     const edit = {}
     const roleOption = [{
@@ -126,5 +129,10 @@ exports.updateInfo = async (req, res, next) => {
 exports.addAdmin = async (req, res, next) => {
     console.log(req.body);
     await admin.register(req.body.name, req.body.email, req.body.newPassword, req.body.role);
+    res.redirect('/admin');
+}
+
+exports.editAdmin = async (req, res, next) => {
+    await admin.edit(req.params.id, req.body);
     res.redirect('/admin');
 }

@@ -21,4 +21,7 @@ router.post('/setting/id=:id', adminController.updateInfo);
 /*Get admin detail page. */
 router.get('/id=:id', adminController.loadAdminDetail);
 
+/*Post admin detail page. */
+router.post('/id=:id', adminController.editAdmin);
+
 module.exports = router;
