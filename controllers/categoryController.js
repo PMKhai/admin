@@ -3,12 +3,31 @@ const category = require('../models/category');
 exports.category_list = async (req, res, next) => {
     if (!req.user)
         res.redirect('/authen');
-    const categoryList = await category.list();
+
+    const sizeOfCategory = await category.count();
+    const numberOfPge = Math.ceil(sizeOfCategory / 6);
+    const paging = []
+
+    for (let i = 1; i <= numberOfPge; i++) {
+        if (i == req.params.pageNumber)
+            paging.push({
+                pnb: i,
+                curentPage: 'disabled'
+            })
+        else
+            paging.push({
+                pnb: i
+            })
+    }
+
+    const categoryList = await category.list(req.params.pageNumber);
     console.log(categoryList);
+
     res.render('category/index', {
         title: " Quản lý loại sản phẩm",
         categoryList,
-        admin: req.user
+        admin: req.user,
+        paging
     });
 }
 

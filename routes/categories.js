@@ -4,7 +4,7 @@ var router = express.Router();
 var category_controller = require('../controllers/categoryController');
 
 /*Get category listing.*/
-router.get('/', category_controller.category_list);
+router.get('/page=:pageNumber', category_controller.category_list);
 
 /*Get category detail.*/
 router.get('/add', category_controller.category_detail);
