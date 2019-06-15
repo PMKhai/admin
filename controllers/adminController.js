@@ -17,7 +17,23 @@ exports.admin_list = async (req, res, next) => {
     if (req.user.role === "normal")
         res.send('Bạn không có quyền truy cập chứ năng này.');
 
-    const adminList = await admin.list();
+    const sizeOfAdmin = await admin.count();
+    const numberOfPge = Math.ceil(sizeOfAdmin / 6);
+    const paging = []
+
+    for (let i = 1; i <= numberOfPge; i++) {
+        if (i == req.params.pageNumber)
+            paging.push({
+                pnb: i,
+                curentPage: 'disabled'
+            })
+        else
+            paging.push({
+                pnb: i
+            })
+    }
+
+    const adminList = await admin.list(req.params.pageNumber);
 
     const index = findElementInArrayByEmail(adminList, req.user.email);
     adminList.splice(index, 1);
@@ -25,7 +41,9 @@ exports.admin_list = async (req, res, next) => {
     res.render('admin/index', {
         title: "Quản trị viên",
         adminList,
-        admin: req.user
+        admin: req.user,
+        paging
+
     })
 }
 
@@ -37,8 +55,10 @@ exports.changeInfo = async (req, res, next) => {
     const display = {
         btn: "Cập nhật"
     };
+
     console.log(req.params.id);
     const adminDetail = await admin.getByID(req.params.id);
+
     res.render('admin/detail', {
         title: "Thông tin quản trị viên",
         admin: req.user,

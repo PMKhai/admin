@@ -63,7 +63,13 @@
                         </tbody>
                     </table>
                     <!-- end project list -->
-
+                    <div class="paginator">
+                        <ul class="pagination pagination-lg">
+                            {{#each paging}}
+                            <li class="{{this.curentPage}}"><a href="/admin/page={{this.pnb}}">{{this.pnb}}</a></li>
+                            {{/each}}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

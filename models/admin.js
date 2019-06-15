@@ -37,8 +37,8 @@ const verify = async (email, password) => {
     return await bcrypt.compare(password, admin.password);
 }
 
-const list = async () => {
-    const results = await dbs.production.collection(ADMIN).find({}).toArray();
+const list = async (page) => {
+    const results = await dbs.production.collection(ADMIN).find({}).skip((page - 1) * 6).limit(6).toArray();
     return results;
 }
 
@@ -100,6 +100,10 @@ const edit = async (id, admin) => {
     }
 }
 
+const count = async () => {
+    return result = await dbs.production.collection(ADMIN).find({}).count();
+}
+
 exports.register = register;
 exports.getByEmail = getByEmail;
 exports.getByID = getByID;
@@ -108,3 +112,4 @@ exports.list = list;
 exports.updated = updated;
 exports.check = check;
 exports.edit = edit;
+exports.count = count;
