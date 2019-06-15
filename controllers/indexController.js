@@ -3,7 +3,7 @@ exports.index = (req, res, next) => {
         res.redirect('/authen');
     } else {
 
-        if (req.user.role === "normal")
+        if (req.user.role !== "admin")
             var role = {};
 
         res.render('index', {

@@ -34,3 +34,8 @@ const updateOne = async (id, customer) => {
     })
 }
 exports.updateOne = updateOne;
+
+const listAll = async () => {
+    return await dbs.production.collection(CUSTOMER).find({}).toArray();
+}
+exports.listAll = listAll;

@@ -14,8 +14,8 @@ const findElementInArrayByEmail = (list, email) => {
 exports.admin_list = async (req, res, next) => {
     if (!req.user)
         res.redirect('/authen');
-    if (req.user.role === "normal")
-        res.send('Bạn không có quyền truy cập chứ năng này.');
+    if (req.user.role != "admin")
+        res.redirect('/');
 
     const sizeOfAdmin = await admin.count();
     const numberOfPge = Math.ceil(sizeOfAdmin / 6);
@@ -50,7 +50,8 @@ exports.admin_list = async (req, res, next) => {
 exports.changeInfo = async (req, res, next) => {
     if (!req.user)
         res.redirect('/authen');
-
+    if (req.user.role != "admin")
+        res.redirect('/');
     const isMe = {}
     const display = {
         btn: "Cập nhật"
@@ -71,7 +72,8 @@ exports.changeInfo = async (req, res, next) => {
 exports.admin_detail = (req, res, next) => {
     if (!req.user)
         res.redirect('/authen');
-
+    if (req.user.role != "admin")
+        res.redirect('/');
     console.log(req.params.id);
     const edit = {}
     const roleOption = [{
@@ -94,7 +96,8 @@ exports.admin_detail = (req, res, next) => {
 exports.loadAdminDetail = async (req, res, next) => {
     if (!req.user)
         res.redirect('/authen');
-
+    if (req.user.role != "admin")
+        res.redirect('/');
     const adminDetail = await admin.getByID(req.params.id);
     const edit = {}
     const display = {
@@ -149,10 +152,10 @@ exports.updateInfo = async (req, res, next) => {
 exports.addAdmin = async (req, res, next) => {
     console.log(req.body);
     await admin.register(req.body.name, req.body.email, req.body.newPassword, req.body.role);
-    res.redirect('/admin');
+    res.redirect('/admin/page=1');
 }
 
 exports.editAdmin = async (req, res, next) => {
     await admin.edit(req.params.id, req.body);
-    res.redirect('/admin');
+    res.redirect('/admin/page=1');
 }

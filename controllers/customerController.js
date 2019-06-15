@@ -21,13 +21,18 @@ exports.customers_list = async (req, res, next) => {
     }
 
     const customerList = await customer.list(req.params.pageNumber);
+    if (!req.user)
+        res.redirect('/authen');
 
+    if (req.user.role !== "admin")
+        var role = {};
 
     res.render("customer/index", {
         title: "Khách hàng",
         admin: req.user,
         customerList,
-        paging
+        paging,
+        role
     });
 }
 
@@ -37,10 +42,15 @@ exports.customers_detail = async (req, res, next) => {
     if (!req.user)
         res.redirect('/authen');
     const customerDetail = await customer.findOne(req.params.id);
+
+    if (req.user.role !== "admin")
+        var role = {};
+
     res.render("customer/detail", {
         title: "Chi Tiết",
         admin: req.user,
-        customerDetail
+        customerDetail,
+        role
     });
 }
 

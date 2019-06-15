@@ -113,3 +113,6 @@
 {{admin.username}}
 {{/extend}}
 {{#extend "idAccount"}}{{admin._id}}{{/extend}}
+{{#if role}}
+{{#extend "display-li"}}none{{/extend}}
+{{/if}}

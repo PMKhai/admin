@@ -24,12 +24,16 @@ exports.product_list = async (req, res, next) => {
 
     const productList = await product.list(req.params.pageNumber);
 
+    if (req.user.role !== "admin")
+        var role = {};
+
     console.log(productList);
     res.render("product/index", {
         title: "Quản lý sản phẩm",
         productList,
         admin: req.user,
-        paging
+        paging,
+        role
     });
 }
 
@@ -51,12 +55,15 @@ exports.product_detail = async (req, res, next) => {
     console.log(categoryList);
     const distributorList = await distributor.list();
     console.log(distributorList);
+    if (req.user.role !== "admin")
+        var role = {};
     res.render("product/detail", {
         title: "Thêm mới sản phẩm",
         display,
         categoryList,
         distributorList,
-        admin: req.user
+        admin: req.user,
+        role
     });
 }
 exports.product_loading_detail = async (req, res, next) => {
@@ -82,13 +89,16 @@ exports.product_loading_detail = async (req, res, next) => {
     const display = {
         btn: "Cập nhật"
     };
+    if (req.user.role !== "admin")
+        var role = {};
     res.render('product/detail', {
         title: "Chỉnh sửa sản phẩm",
         productDetail,
         display,
         categoryList,
         distributorList,
-        admin: req.user
+        admin: req.user,
+        role
     });
 }
 
@@ -104,5 +114,5 @@ exports.product_delete = async (req, res, next) => {
     if (!req.user)
         res.redirect('/authen');
     await product.deleting(req.params.id);
-    res.redirect('/product');
+    res.redirect('/product/page=1');
 }
