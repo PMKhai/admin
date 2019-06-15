@@ -38,124 +38,33 @@
             </thead>
             <tbody>
               <tr>
+                {{#each order}}
+                {{#each this}}
                 <td>1</td>
                 <td>
-                  <a>Pesamakini Backend UI</a>
+                  <a>{{this.info-order.name}}</a>
                   <br />
-                  <small>Ngày đặt hàng 01.01.2015</small>
+                  <small>Ngày đặt hàng {{this.date}}</small>
                 </td>
                 <td>
                   <ul class="list-inline">
+                    {{#each this.productlist}}
                     <li>
-                      <img src="images/user.png" class="avatar" alt="Avatar">
+                      <img src="{{this.image}}" class="avatar" alt="{{this.name}}">
                     </li>
-                    <li>
-                      <img src="images/user.png" class="avatar" alt="Avatar">
-                    </li>
-                    <li>
-                      <img src="images/user.png" class="avatar" alt="Avatar">
-                    </li>
-                    <li>
-                      <img src="images/user.png" class="avatar" alt="Avatar">
-                    </li>
+                    {{/each}}
                   </ul>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-success btn-xs">Đã nhận</button>
+                  <button type="button" class="btn {{this.display}} btn-xs">{{this.status}}</button>
                 </td>
                 <td>
-                  <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Chi tiết </a>
-                  <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Chỉnh sửa </a>
-                  <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
+                  <a href="/order/detail/{{this.index}}/{{@index}}" class="btn btn-primary btn-xs"><i
+                      class="fa fa-folder"></i> Chi tiết </a>
                 </td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td>
-                  <a>Pesamakini Backend UI</a>
-                  <br />
-                  <small>Ngày đặt hàng 01.01.2015</small>
-                </td>
-                <td>
-                  <ul class="list-inline">
-                    <li>
-                      <img src="images/user.png" class="avatar" alt="Avatar">
-                    </li>
-                    <li>
-                      <img src="images/user.png" class="avatar" alt="Avatar">
-                    </li>
-                  </ul>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-primary btn-xs">Đang giao</button>
-                </td>
-                <td>
-                  <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Chi tiết </a>
-                  <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Chỉnh sửa </a>
-                  <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>
-                  <a>Pesamakini Backend UI</a>
-                  <br />
-                  <small>Ngày đặt hàng 01.01.2015</small>
-                </td>
-                <td>
-                  <ul class="list-inline">
-                    <li>
-                      <img src="images/user.png" class="avatar" alt="Avatar">
-                    </li>
-                    <li>
-                      <img src="images/user.png" class="avatar" alt="Avatar">
-                    </li>
-                    <li>
-                      <img src="images/user.png" class="avatar" alt="Avatar">
-                    </li>
-                  </ul>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-danger btn-xs">Hủy đơn</button>
-                </td>
-                <td>
-                  <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Chi tiêt </a>
-                  <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Chỉnh sửa </a>
-                  <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>
-                  <a>Pesamakini Backend UI</a>
-                  <br />
-                  <small>Ngày đặt hàng 01.01.2015</small>
-                </td>
-                <td>
-                  <ul class="list-inline">
-                    <li>
-                      <img src="images/user.png" class="avatar" alt="Avatar">
-                    </li>
-                    <li>
-                      <img src="images/user.png" class="avatar" alt="Avatar">
-                    </li>
-                    <li>
-                      <img src="images/user.png" class="avatar" alt="Avatar">
-                    </li>
-                    <li>
-                      <img src="images/user.png" class="avatar" alt="Avatar">
-                    </li>
-                  </ul>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-success btn-xs">Đã nhận</button>
-                </td>
-                <td>
-                  <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Chi tiết </a>
-                  <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Chỉnh sửa </a>
-                  <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
-                </td>
-              </tr>
+              {{/each}}
+              {{/each}}
             </tbody>
           </table>
           <!-- end project list -->
