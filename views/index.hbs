@@ -65,116 +65,20 @@
               </div>
               <div class="scroll">
                 <ul class="list-unstyled top_profiles scroll-view">
+                  {{#each productList}}
                   <li class="media event">
-                    <a class="pull-left border-aero profile_thumb">
-                      <i class="fa fa-user aero"></i>
-                    </a>
+
+                    <img src="https://ltwebshopside.herokuapp.com{{this.image}}" alt="..."
+                      class="img-circle profile_img">
+
                     <div class="media-body">
-                      <a class="title" href="#">Áo ba lổ</a>
-                      <p> Giá bán<strong> $23. </strong> </p>
-                      <p> <small>Số lượng đã bán 100 cái.</small>
+                      <a class="title" href="/product/{{this._id}}">{{this.name}}</a>
+                      <p> Giá bán<strong> {{this.price}} VNĐ. </strong> </p>
+                      <p> <small>Số lượng đã bán {{this.quantityPurchased}} cái.</small>
                       </p>
                     </div>
                   </li>
-                  <li class="media event">
-                    <a class="pull-left border-aero profile_thumb">
-                      <i class="fa fa-user aero"></i>
-                    </a>
-                    <div class="media-body">
-                      <a class="title" href="#">Áo ba lổ</a>
-                      <p> Giá bán<strong> $23. </strong> </p>
-                      <p> <small>Số lượng đã bán 100 cái.</small>
-                      </p>
-                    </div>
-                  </li>
-                  <li class="media event">
-                    <a class="pull-left border-aero profile_thumb">
-                      <i class="fa fa-user aero"></i>
-                    </a>
-                    <div class="media-body">
-                      <a class="title" href="#">Áo ba lổ</a>
-                      <p> Giá bán<strong> $23. </strong> </p>
-                      <p> <small>Số lượng đã bán 100 cái.</small>
-                      </p>
-                    </div>
-                  </li>
-                  <li class="media event">
-                    <a class="pull-left border-aero profile_thumb">
-                      <i class="fa fa-user aero"></i>
-                    </a>
-                    <div class="media-body">
-                      <a class="title" href="#">Áo ba lổ</a>
-                      <p> Giá bán<strong> $23. </strong> </p>
-                      <p> <small>Số lượng đã bán 100 cái.</small>
-                      </p>
-                    </div>
-                  </li>
-                  <li class="media event">
-                    <a class="pull-left border-aero profile_thumb">
-                      <i class="fa fa-user aero"></i>
-                    </a>
-                    <div class="media-body">
-                      <a class="title" href="#">Áo ba lổ</a>
-                      <p> Giá bán<strong> $23. </strong> </p>
-                      <p> <small>Số lượng đã bán 100 cái.</small>
-                      </p>
-                    </div>
-                  </li>
-                  <li class="media event">
-                    <a class="pull-left border-aero profile_thumb">
-                      <i class="fa fa-user aero"></i>
-                    </a>
-                    <div class="media-body">
-                      <a class="title" href="#">Áo ba lổ</a>
-                      <p> Giá bán<strong> $23. </strong> </p>
-                      <p> <small>Số lượng đã bán 100 cái.</small>
-                      </p>
-                    </div>
-                  </li>
-                  <li class="media event">
-                    <a class="pull-left border-aero profile_thumb">
-                      <i class="fa fa-user aero"></i>
-                    </a>
-                    <div class="media-body">
-                      <a class="title" href="#">Áo ba lổ</a>
-                      <p> Giá bán<strong> $23. </strong> </p>
-                      <p> <small>Số lượng đã bán 100 cái.</small>
-                      </p>
-                    </div>
-                  </li>
-                  <li class="media event">
-                    <a class="pull-left border-aero profile_thumb">
-                      <i class="fa fa-user aero"></i>
-                    </a>
-                    <div class="media-body">
-                      <a class="title" href="#">Áo ba lổ</a>
-                      <p> Giá bán<strong> $23. </strong> </p>
-                      <p> <small>Số lượng đã bán 100 cái.</small>
-                      </p>
-                    </div>
-                  </li>
-                  <li class="media event">
-                    <a class="pull-left border-aero profile_thumb">
-                      <i class="fa fa-user aero"></i>
-                    </a>
-                    <div class="media-body">
-                      <a class="title" href="#">Áo ba lổ</a>
-                      <p> Giá bán<strong> $23. </strong> </p>
-                      <p> <small>Số lượng đã bán 100 cái.</small>
-                      </p>
-                    </div>
-                  </li>
-                  <li class="media event">
-                    <a class="pull-left border-aero profile_thumb">
-                      <i class="fa fa-user aero"></i>
-                    </a>
-                    <div class="media-body">
-                      <a class="title" href="#">Áo ba lổ</a>
-                      <p> Giá bán<strong> $23. </strong> </p>
-                      <p> <small>Số lượng đã bán 100 cái.</small>
-                      </p>
-                    </div>
-                  </li>
+                  {{/each}}
                 </ul>
               </div>
             </div>

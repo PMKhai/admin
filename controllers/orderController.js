@@ -47,6 +47,13 @@ exports.orderDetail = async (req, res, next) => {
       order.push(element.listorder);
     }
   });
+
   const orderDetail = order[req.params.indexInUserlist][req.params.indexInOrderlist];
 
+  res.render('order/detail', {
+    title: "Chi tiết đơn hàng",
+    admin: req.user,
+    role,
+    orderDetail
+  })
 }

@@ -48,9 +48,14 @@ const count = async () => {
     return result;
 }
 
+const listAll = async () => {
+    return await dbs.production.collection(PRODUCT).find({}).toArray();
+}
+
 exports.list = list;
 exports.adding = adding;
 exports.detail = detail;
 exports.editing = editing;
 exports.deleting = deleting;
 exports.count = count;
+exports.listAll = listAll;
