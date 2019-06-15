@@ -4,7 +4,7 @@ var router = express.Router();
 var distributor_controller = require('../controllers/distributorController');
 
 /* Get distributor list.*/
-router.get('/', distributor_controller.distributor_list);
+router.get('/page=:pageNumber', distributor_controller.distributor_list);
 
 /*Get adding distributor page*/
 router.get('/add', distributor_controller.distributor_detail);

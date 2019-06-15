@@ -3,12 +3,31 @@ const distributor = require('../models/distributor');
 exports.distributor_list = async (req, res, next) => {
     if (!req.user)
         res.redirect('/authen');
-    const distributorList = await distributor.list();
+
+    const sizeOfDistributor = await distributor.count();
+    const numberOfPge = Math.ceil(sizeOfDistributor / 6);
+    const paging = []
+
+    for (let i = 1; i <= numberOfPge; i++) {
+        if (i == req.params.pageNumber)
+            paging.push({
+                pnb: i,
+                curentPage: 'disabled'
+            })
+        else
+            paging.push({
+                pnb: i
+            })
+    }
+
+    const distributorList = await distributor.list(req.params.pageNumber);
     console.log(distributorList);
+
     res.render('distributor/index', {
         title: "Nhà phân phối",
         distributorList,
-        admin: req.user
+        admin: req.user,
+        paging
     })
 }
 
