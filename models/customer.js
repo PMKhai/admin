@@ -22,13 +22,17 @@ const findOne = async (id) => {
 exports.findOne = findOne;
 
 const updateOne = async (id, customer) => {
+    let active = false;
+    if (customer.active == 'true')
+        active = true;
     return await dbs.production.collection(CUSTOMER).updateOne({
         _id: ObjectId(id)
     }, {
         $set: {
-            username: customer.username,
+            user_name: customer.username,
             email: customer.email,
             address: customer.address,
+            isActivated: active
 
         }
     })

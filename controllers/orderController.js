@@ -50,10 +50,25 @@ exports.orderDetail = async (req, res, next) => {
 
   const orderDetail = order[req.params.indexInUserlist][req.params.indexInOrderlist];
 
+  const statusOption = [{
+    option: 'đang giao'
+  }, {
+    option: 'đã giao'
+  }, {
+    option: 'hủy đơn'
+  }];
+
+
+  statusOption.forEach(element => {
+    if (element.option == orderDetail.status)
+      element.selected = 'selected';
+  });
+
   res.render('order/detail', {
     title: "Chi tiết đơn hàng",
     admin: req.user,
     role,
-    orderDetail
+    orderDetail,
+    statusOption
   })
 }

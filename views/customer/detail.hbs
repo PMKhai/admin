@@ -18,7 +18,7 @@
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
                   data-validate-words="1" name="username" placeholder="" required="required" type="text"
-                  value="{{customerDetail.username}}">
+                  value="{{customerDetail.user_name}}">
               </div>
             </div>
             <div class="item form-group">
@@ -46,8 +46,9 @@
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <select name="active" class="form-control col-md-7 col-xs-12" value="">
                   <option selected hidden>Chọn tình trạng...</option>
-                  <option value="active" {{this.selected}}>Đã kích hoạt</option>
-                  <option value="unactive" {{this.selected}}>chờ kích hoạt</option>
+                  {{#each isActivated}}
+                  <option value="{{this.value}}" {{this.selected}}>{{this.display}}</option>
+                  {{/each}}
                 </select>
               </div>
             </div>

@@ -21,6 +21,18 @@ exports.customers_list = async (req, res, next) => {
     }
 
     const customerList = await customer.list(req.params.pageNumber);
+
+    customerList.forEach(element => {
+        let display = "Chưa kích hoạt";
+        let btn = 'btn-danger'
+        if (element.isActivated == true) {
+            display = "Đã kích hoạt";
+            btn = 'btn-success'
+        }
+        element.display = display;
+        element.btn = btn;
+    });
+
     if (!req.user)
         res.redirect('/authen');
 
@@ -46,11 +58,25 @@ exports.customers_detail = async (req, res, next) => {
     if (req.user.role !== "admin")
         var role = {};
 
+    const isActivated = [{
+        value: true,
+        display: "Đã kích hoạt"
+    }, {
+        value: false,
+        display: "Chưa kích hoạt"
+    }];
+
+    isActivated.forEach(element => {
+        if (element.value == customerDetail.isActivated)
+            element.selected = 'selected';
+    });
+
     res.render("customer/detail", {
         title: "Chi Tiết",
         admin: req.user,
         customerDetail,
-        role
+        role,
+        isActivated
     });
 }
 

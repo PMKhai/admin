@@ -104,6 +104,13 @@ const count = async () => {
     return result = await dbs.production.collection(ADMIN).find({}).count();
 }
 
+const deleting = async (id) => {
+    return await dbs.production.collection(ADMIN).deleteOne({
+        _id: ObjectID(id)
+    });
+}
+
+
 exports.register = register;
 exports.getByEmail = getByEmail;
 exports.getByID = getByID;
@@ -113,3 +120,4 @@ exports.updated = updated;
 exports.check = check;
 exports.edit = edit;
 exports.count = count;
+exports.deleting = deleting;

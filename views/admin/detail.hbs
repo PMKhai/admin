@@ -104,10 +104,14 @@
 {{#extend "scripts"}}
 <script>
     $('#repassword').focusout(function () {
-        if ($('#newPassword').val() != $('#repassword').val())
+        if ($('#newPassword').val() != $('#repassword').val()) {
             $('#error-message').html('Mật khẩu mới không khớp');
-        else
+            $("#send").attr("disabled", true);
+        }
+        else {
             $('#error-message').html('');
+            $("#send").attr("disabled", false);
+        }
     });
 </script>
 {{/extend}}
@@ -118,11 +122,16 @@
         $.getJSON('/api/admin/check?email=' + $('#email').val(), function (data) {
             if (data) {
                 $('#error-message-email').html('Email đã tồn tại. Vui lòng chọn email khác.');
+                $("#send").attr("disabled", true);
             }
             else {
                 $('#error-message-email').html('');
+                $("#send").attr("disabled", false);
             }
         })
     });
 </script>
 {{/extend}}
+{{#if role}}
+{{#extend "display-li"}}none{{/extend}}
+{{/if}}

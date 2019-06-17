@@ -50,8 +50,6 @@ exports.admin_list = async (req, res, next) => {
 exports.changeInfo = async (req, res, next) => {
     if (!req.user)
         res.redirect('/authen');
-    if (req.user.role != "admin")
-        res.redirect('/');
     const isMe = {}
     const display = {
         btn: "Cập nhật"
@@ -60,12 +58,16 @@ exports.changeInfo = async (req, res, next) => {
     console.log(req.params.id);
     const adminDetail = await admin.getByID(req.params.id);
 
+    if (req.user.role !== "admin")
+        var role = {};
+
     res.render('admin/detail', {
         title: "Thông tin quản trị viên",
         admin: req.user,
         isMe,
         adminDetail,
-        display
+        display,
+        role
     })
 }
 
@@ -157,5 +159,12 @@ exports.addAdmin = async (req, res, next) => {
 
 exports.editAdmin = async (req, res, next) => {
     await admin.edit(req.params.id, req.body);
+    res.redirect('/admin/page=1');
+}
+
+exports.deleteAdmin = async (req, res, next) => {
+    if (!req.user)
+        res.redirect('/authen');
+    await admin.deleting(req.params.id);
     res.redirect('/admin/page=1');
 }

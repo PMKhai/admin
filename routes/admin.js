@@ -24,4 +24,6 @@ router.get('/id=:id', adminController.loadAdminDetail);
 /*Post admin detail page. */
 router.post('/id=:id', adminController.editAdmin);
 
+router.get('/delete/:id', adminController.deleteAdmin);
+
 module.exports = router;

@@ -23,8 +23,6 @@
       <div class="x_panel">
         <div class="x_title">
           <ul class="nav navbar-right panel_toolbox">
-            <li><a href="#" class="btn btn-default btn-xs"><i class="fa fa-plus-square"></i> Thêm</a>
-            </li>
           </ul>
           <div class="clearfix"></div>
         </div>
@@ -48,7 +46,7 @@
               <tr>
                 <td>1</td>
                 <td>
-                  <a>{{this.username}}</a>
+                  <a>{{this.user_name}}</a>
                 </td>
                 <td>
                   <p>{{this.email}}</p>
@@ -57,12 +55,11 @@
                   <p>{{this.address}}</p>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-success btn-xs">Đang hoạt động</button>
+                  <button type="button" class="btn {{this.btn}} btn-xs">{{this.display}}</button>
                 </td>
                 <td>
                   <a href="/customer/id={{this._id}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Chỉnh
                     sửa </a>
-                  <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
                 </td>
               </tr>
               {{/each}}
