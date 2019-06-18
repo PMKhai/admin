@@ -37,7 +37,7 @@ exports.index = async (req, res, next) => {
 
                     for (let z = 0; z < sizez; z++)
                         if (order[i][y].productlist[z].name == productList[u].name)
-                            quantityPurchased++;
+                            quantityPurchased += order[i][y].productlist[z].quantity;
                 }
             }
             productList[u].quantityPurchased = quantityPurchased;
