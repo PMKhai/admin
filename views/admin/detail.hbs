@@ -118,7 +118,7 @@
 
 {{#extend "ajax"}}
 <script>
-    $('#email').focusout(function () {
+    $('#email').keyup(function () {
         $.getJSON('/api/admin/check?email=' + $('#email').val(), function (data) {
             if (data) {
                 $('#error-message-email').html('Email đã tồn tại. Vui lòng chọn email khác.');

@@ -38,6 +38,7 @@
               <tr>
                 <th style="width: 1%">STT</th>
                 <th style="width: 30%">Tên sản phẩm</th>
+                <th>Ảnh sản phẩm</th>
                 <th>Nhà phân phối</th>
                 <th>Loại sản phẩm</th>
                 <th>Số lượng</th>
@@ -53,6 +54,13 @@
                   <b>{{this.name}}</b>
                   <br />
                   <small>Mã SP: {{this._id}}</small>
+                </td>
+                <td>
+                  <ul class="list-inline">
+                    <li>
+                      <img src="https://ltwshopside.herokuapp.com/{{this.image}}" class="avatar" alt="{{this.name}}">
+                    </li>
+                  </ul>
                 </td>
                 <td>{{this.distributor}}</td>
                 <td>
